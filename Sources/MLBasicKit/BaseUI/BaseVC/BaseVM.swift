@@ -8,8 +8,11 @@
 import UIKit
 import Combine
 
+public protocol ViewState {}
+
 open class BaseVM {
-    public var cancellables = Set<AnyCancellable>()
+
+    public var state = PassthroughSubject<ViewState, Never>()
 
     required public init() {
         // Intentionally unimplemented
