@@ -10,8 +10,13 @@ import Combine
 
 public protocol ViewState {}
 
-open class BaseVM {
+public enum LoadingState {
+    case loading, succes, failed, none
+}
 
+open class BaseVM: ObservableObject {
+
+    @Published open var loadingState: LoadingState = .none
     public var state = PassthroughSubject<ViewState, Never>()
 
     required public init() {
